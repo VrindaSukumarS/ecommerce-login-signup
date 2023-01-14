@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 mt-3 text-white">
+            <h2 class="fw-bold">EDIT PRODUCTS</h2>
+            <form action="/admin/editProduct/{{product._id}}" style="margin-top: 2em;" method="post" enctype="multipart/form-data">
+                <div class="mb-3">
+                  <label for="name" class="form-label">Book Name</label>
+                  <input type="text" class="form-control" name="name" aria-describedby="emailHelp" value="{{product.name}}">
+                </div>
+                <div class="mb-3">
+                  <label for="name" class="form-label">Author</label>
+                  <input type="text" class="form-control" name="author" value="{{product.author}}">
+                </div>
+                <div class="mb-3">
+                  <label for="description" class="form-label">Description</label>
+                  <input type="text" class="form-control" name="description" value="{{product.description}}">
+                </div>
+                <div class="mb-3">
+                  <label for="price" class="form-label">Price</label>
+                  <input type="number" class="form-control" name="price" value="{{product.price}}">
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="form-label">Image : </label>
+                    <img src="/product-images/{{product._id}}.jpg" style="width: 80px;height: 80px;" id="imgView"><br><br>
+                    <input type="file" class="form-control" name="image" onchange="viewImage(event)">
+                </div>
+
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    const viewImage=(event)=>{
+        document.getElementById('imgView').src=URL.createObjectURL(event.target.files[0]);
+    }
+</script>
